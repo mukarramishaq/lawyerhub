@@ -1,0 +1,31 @@
+{
+  "name": "lawyerhub",
+  "version": "1.0.0",
+  "description": "This is a semester project for software construction. The main purpose of this project is to provide a platform for lawyers where they can see the legal issues posted by clients and then can contact clients for further proceedings",
+  "main": "index.js",
+  "scripts": {
+    "test": "run lawyerhub"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukarramishaq/lawyerhub.git"
+  },
+  "keywords": [
+    "lawyer",
+    "hub",
+    "lawyerhub",
+    "lawyers",
+    "legal",
+    "platform"
+  ],
+  "author": "Mukarram Ishaq, Muhammad Huzaifa Bhajwa, Maryam Mehreen",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/mukarramishaq/lawyerhub/issues"
+  },
+  "homepage": "https://github.com/mukarramishaq/lawyerhub#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongoose": "^4.5.8"
+  }
+}
