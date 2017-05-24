@@ -1,0 +1,6 @@
+var Mongoose = require('mongoose');
+Mongoose.connect('mongodb://mukarram:qwerty@ds119091.mlab.com:19091/lawyerhubdb');
+module.exports.insert = function(text){
+	
+	
+}
