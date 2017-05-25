@@ -56,4 +56,4 @@ process.on('SIGTERM',function(){
 
 
 /********* import db schemas here *********/
-require('./users');
+require('./userSchema');
