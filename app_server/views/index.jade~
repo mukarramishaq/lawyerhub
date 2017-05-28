@@ -5,5 +5,5 @@ block content
 			.col-md-2
 			.col-md-8
 				h1= title
-				p Welcome to #{title}
+  p Welcome to #{title}
 			.col-md-2

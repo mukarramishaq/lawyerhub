@@ -1,3 +1,3 @@
 module.exports.index = function(req,res){
-	res.render('index',{title:'LawyerHub'});
+	res.render('index',{title:'LawyerHub',linkHome:'/'});
 };
