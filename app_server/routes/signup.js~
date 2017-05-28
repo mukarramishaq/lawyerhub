@@ -6,6 +6,6 @@ var ctrlSignup = require('../controllers/signup');
 /*router.get('/', function(req, res, next) {
   res.render('index', { title: 'LawyerHub' });
 });*/
-router.get('/',ctrlSignup.login);
+router.get('/',ctrlSignup.signup);
 
 module.exports = router;
