@@ -1,9 +1,44 @@
-extends layout
+extends layout2
 block content
 	.container
 		.row
-			.col-md-2
-			.col-md-8
-				h1= title
-				p Welcome to #{title}
-			.col-md-2
+			.container(data-ng-app='myApp')
+				div(data-ng-controller='signup')
+					#messages.alert.alert-success(data-ng-show='messages', data-ng-bind='messages')
+					|    
+					div(data-ng-show='progress.active()', style='color: red; font-size: 50px;') Sending&mldr;
+					|    
+					form(name='signupForm', novalidate='', role='form')
+						.form-group
+							label(for='firstname') First Name 
+							|         
+							span.label.label-danger(data-ng-show='submitted && signupForm.firstname.$error.required') Required!
+							|         
+							input.form-control(type='text', name='firstname', data-ng-model='firstname', required='')
+							|&#x9;  
+						.form-group
+							label(for='lastname') Last Name 
+							|         
+							span.label.label-danger(data-ng-show='submitted && signupForm.lastname.$error.required') Required!
+							|         
+							input.form-control(type='text', name='lastname', data-ng-model='lastname', required='')
+							|      
+						.form-group
+							label(for='email') Your E-mail address
+							|         
+							span.label.label-danger(data-ng-show='submitted && signupForm.email.$error.required') Required!
+							|         
+							span.label.label-danger(data-ng-show='submitted && signupForm.$error.email') Invalid email!
+							|         
+							input.form-control(type='email', name='email', data-ng-model='email', required='')
+							|      
+						.form-gruop
+							lable(for='password')
+							|Password
+							span.label.label-danger(data-ng-show='submitted && signupForm.password.$error.required') Required!
+							|        
+							span.label.label-danger(data-ng-show='submitted && signupForm.$error.password') Invalid Password!
+							|        
+							input.form-control(type='password', name='password', data-ng-model='password', required='')
+							|  
+						button.btn.btn-default(data-ng-disabled='progress.active()', data-ng-click='submit(signupForm)') Submit
