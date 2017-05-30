@@ -33,11 +33,11 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           'type': $scope.type
         },
       };
-
+		
       // Perform JSONP request.
       var $promise = $http.get('/loginAttempt', config)
         .success(function(data, status, headers, config) {
-        	console.log(data);console.log(status);console.log(config);
+        	console.log(data);console.log(status);console.log(config);console.log($scope.type);
           if (data.status == 'OK') {
             $scope.email = null;
             $scope.password = null;
