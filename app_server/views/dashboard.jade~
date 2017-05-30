@@ -1,4 +1,9 @@
-extends layout
+extends layoutd
 block content
-	h1 title:
-	p welcom to #title
+	.container
+		.row
+			.col-md-2
+			.col-md-8
+				h1= title
+				p welcom to #title
+			.col-md-2

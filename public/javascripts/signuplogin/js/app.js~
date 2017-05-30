@@ -2,7 +2,7 @@
  * AngularJS module to process a form.
  */
 angular.module('myApp', ['ajoslin.promise-tracker'])
-  .controller('signup', function ($scope, $http, $log, promiseTracker, $timeout,$location) {
+  .controller('signup', function ($scope, $http, $log, promiseTracker, $timeout,$location,$window) {
     
 
     // Inititate the promise tracker to track form submissions.
@@ -42,17 +42,26 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       // Perform JSONP request.
       var $promise = $http.get('/createAccount', config)
         .success(function(data, status, headers, config) {
-        	console.log(data);console.log(status);console.log(config);
+        	//console.log(data);console.log(status);console.log(config);
+        	//console.log(data.rurl);
+        	//$window.location.href = data.rurl;
           if (data.status == 'OK') {
+          	console.log(data);
             $scope.firstname = null;
             $scope.lastname = null;
             $scope.email = null;
             $scope.password = null;
+            $scope.password2 = null;
             $scope.userType = null;
             //$scope.messages = 'Your form has been sent!';
             $scope.messages = data.msg;
             $scope.submitted = false;
-          } else {
+          } 
+          //if(data.rurl){
+          	//console.log(data);
+          	//$window.location.href = data.rurl;
+          //}
+          else {
             //$scope.messages = 'Oops, we received your request, but there was an error processing it.';
             $scope.messages = data.msg;
             $log.error(data);

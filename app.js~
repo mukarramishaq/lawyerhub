@@ -4,15 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieSession = require('cookie-session');
 require('./app_server/models/db');
 var index = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
 var loginRouter = require('./app_server/routes/login');
 var signupRouter = require('./app_server/routes/signup');
+var logoutRouter = require('./app_server/routes/logout');
+var dashboardRouter = require('./app_server/routes/dashboard');
 //var loginController = require('./app_server/controllers/login');
-var signupController = require('./app_server/controllers/signup');
+//var signupController = require('./app_server/controllers/signup');
 var app = express();
-var session = require('client-sessions');
+//var session = require('client-sessions');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server','views'));
@@ -25,11 +29,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//initialize the session
+app.use(cookieSession({
+	name: 'session',
+	secret: 'lakdjflaksdjfklasdjfosduieoruw,wenqr,mnrqw,emrn',
+	maxAge: 2*60*1000
+	}));
+//add routers 
 app.use('/', index);
 app.use('/', loginRouter);
 app.use('/', signupRouter);
-app.post('/createAccount',function(req,res){console.log(req.body);});
+app.use('/',dashboardRouter);
+app.use('/',logoutRouter);
+//app.post('/createAccount',function(req,res){console.log(req.body);});
 app.use('/users', users);
 
 //app.use('/login/verify', loginRouter);

@@ -12,6 +12,7 @@ module.exports.login = function(req,res){
 	}
 };
 module.exports.loginVerifier = function(req,res){
+	var sess = req.session;
 	//first check the all fields have data and then take measures for sql injection, for the time being it is not implemented yet
 	User.findOne({'emailid':req.query.email,'type':req.query.type},function(err,user){
 		if(err) res.json({'status':'500','msg':'Error during retrieving credentials from database!'});
@@ -32,7 +33,11 @@ module.exports.loginVerifier = function(req,res){
 						console.log('successfull login');
 						//set a cookie with the user information
 						//req.session.user = user;
-						res.json({'status':'OK','msg':'Login Successful'});
+						//set values for session
+						sess.emailid = req.query.email;
+						sess.type = req.query.type;
+						res.json({'status':'OK','msg':'Login Successful',redirect:'/dashboard/'+sess.type});
+						//res.redirect('/dashboard/'+sess.type);
 					}
 					else{
 						res.json({'status':'400', 'msg':'Incorrect password!'});

@@ -2,7 +2,7 @@
  * AngularJS module to process a form.
  */
 angular.module('myApp', ['ajoslin.promise-tracker'])
-  .controller('login', function ($scope, $http, $log, promiseTracker, $timeout,$location) {
+  .controller('login', function ($scope, $http, $log, promiseTracker, $timeout,$location,$window) {
 
     // Inititate the promise tracker to track form submissions.
     $scope.progress = promiseTracker();
@@ -44,6 +44,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.userType = null;
             $scope.messages = data.msg;
             $scope.submitted = false;
+            $window.location.href = data.rurl;
           } else {
             $scope.messages = data.msg;
             $log.error(data);

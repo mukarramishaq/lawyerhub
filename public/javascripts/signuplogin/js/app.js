@@ -42,8 +42,11 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       // Perform JSONP request.
       var $promise = $http.get('/createAccount', config)
         .success(function(data, status, headers, config) {
-        	console.log(data);console.log(status);console.log(config);
+        	//console.log(data);console.log(status);console.log(config);
+        	//console.log(data.rurl);
+        	//$window.location.href = data.rurl;
           if (data.status == 'OK') {
+          	console.log(data);
             $scope.firstname = null;
             $scope.lastname = null;
             $scope.email = null;
@@ -53,7 +56,12 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             //$scope.messages = 'Your form has been sent!';
             $scope.messages = data.msg;
             $scope.submitted = false;
-          } else {
+          } 
+          //if(data.rurl){
+          	//console.log(data);
+          	//$window.location.href = data.rurl;
+          //}
+          else {
             //$scope.messages = 'Oops, we received your request, but there was an error processing it.';
             $scope.messages = data.msg;
             $log.error(data);
