@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
-var SLAT_WORK_FACTOR = 10;
+var SALT_WORK_FACTOR = 10;
 
 /***************Schema of User collection or table ****************/
 var UserSchema = new Schema({
@@ -9,7 +9,7 @@ var UserSchema = new Schema({
 	lastname:{type:String,required:true},
 	emailid:{type:String,required:true,index:{unique:true}},
 	password:{type:String,required:true},
-	type:{type:String,required:true}
+	type:{type:String,required:true,}
 });
 
 

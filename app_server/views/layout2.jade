@@ -8,8 +8,7 @@ html
 		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 		script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 		script(type='text/javascript', src='http://code.angularjs.org/1.2.25/angular.min.js')
-		script(type='text/javascript', src='/javascripts/signup/js/modules/promise-tracker.js')
-		script(type='text/javascript', src='/javascripts/signup/js/app.js')
+		script(type='text/javascript', src='/javascripts/signuplogin/js/modules/promise-tracker.js')
 		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
 	body
 		nav.navbar.navbar-inverse
@@ -17,7 +16,7 @@ html
 				div.navbar-header
 					a.navbar-brand(href=linkHome)= title
 				ul.nav.navbar-nav.navbar-right
-					li: a(href='/signup'): span.glyphicon.glyphicon-user  Sign Up
-					li: a(href='/login'): span.glyphicon.glyphicon-log-in  Login
+					li: a(href='/signup/lawyer'): span.glyphicon.glyphicon-user  Sign Up
+					li: a(href='/login/lawyer'): span.glyphicon.glyphicon-log-in  Login
 
 		block content

@@ -1,0 +1,4 @@
+angular.module('chooseType',[])
+	.controller('chooseTypeController',function($scope){
+		$scope.signUpAs = 'Lawyer'
+	});

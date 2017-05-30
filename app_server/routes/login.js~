@@ -6,6 +6,7 @@ var ctrlLogin = require('../controllers/login');
 /*router.get('/', function(req, res, next) {
   res.render('index', { title: 'LawyerHub' });
 });*/
-router.get('/',ctrlLogin.login);
+router.get('/login/:userType',ctrlLogin.login);
+router.get('/login/action',ctrlLogin.loginVerifier);
 
 module.exports = router;

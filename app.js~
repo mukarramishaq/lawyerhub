@@ -9,8 +9,10 @@ var index = require('./app_server/routes/index');
 var users = require('./app_server/routes/users');
 var loginRouter = require('./app_server/routes/login');
 var signupRouter = require('./app_server/routes/signup');
-
+//var loginController = require('./app_server/controllers/login');
+var signupController = require('./app_server/controllers/signup');
 var app = express();
+var session = require('client-sessions');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server','views'));
@@ -25,9 +27,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/', loginRouter);
+app.use('/', signupRouter);
+app.post('/createAccount',function(req,res){console.log(req.body);});
 app.use('/users', users);
-app.use('/login', loginRouter);
-app.use('/signup', signupRouter);
+
+//app.use('/login/verify', loginRouter);
+//app.post('login/verify',loginController.loginVerifier)
+/**/
+//app.get('/signup/:userType', signupController.signup);
+
+/*******session ********/
+app.use(session({
+	cookieName:'session',
+	secret: 'dslvsa;poierldsjdlkfjeooiwfldsfjf12345678ikmnb3456789okjmnve3456780987654567890',
+	duration: 30*60*1000,
+	activeDuration:5*60*1000
+	}));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

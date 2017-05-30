@@ -1,0 +1,24 @@
+doctype html
+html
+	head
+		title= title
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		//link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+		script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		script(type='text/javascript', src='http://code.angularjs.org/1.2.25/angular.min.js')
+		script(type='text/javascript', src='/javascripts/signuplogin/js/modules/promise-tracker.js')
+		
+		//
+		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
+	body
+		nav.navbar.navbar-inverse
+			div.container-fluid
+				div.navbar-header
+					a.navbar-brand(href=linkHome)= title
+				ul.nav.navbar-nav.navbar-right
+					li: a(href='/signup/lawyer'): span.glyphicon.glyphicon-user  Sign Up
+					li: a(href='/login/lawyer'): span.glyphicon.glyphicon-log-in  Login
+
+		block content
