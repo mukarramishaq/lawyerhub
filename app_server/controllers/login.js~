@@ -4,11 +4,11 @@ module.exports.login = function(req,res){
 	//console.log(req.params.userType);
 	if(userType == 'lawyer'){
 		//console.log('-----> ut:'+userType);
-		res.render('login',{title:'Login | LawyerHub',linkHome:'/',userType:'lawyer',inverseUserType:'client'});
+		res.render('login',{title:'Login',linkHome:'/',nameHome:'LawyerHub',userType:'lawyer',inverseUserType:'client'});
 	}
 	else{
 		//console.log('!!!!!!!-----> ut:'+userType);
-		res.render('login',{title:'Login | LawyerHub',linkHome:'/',userType:'client',inverseUserType:'lawyer'});
+		res.render('login',{title:'Login | LawyerHub',linkHome:'/',nameHome:'LawyerHub',userType:'client',inverseUserType:'lawyer'});
 	}
 };
 module.exports.loginVerifier = function(req,res){
@@ -20,7 +20,7 @@ module.exports.loginVerifier = function(req,res){
 			var tempType = '';
 			if(req.query.type == 'lawyer'){ tempType = 'client';}
 			else {tempType = 'lawyer';}
-			res.json({'status':'400','msg':'This email is registered as '+tempType+'. So change login type get access.'});
+			res.json({'status':'400','msg':'This email is registered as '+tempType+'. Whereas you are logging as '+req.query.type});
 		}
 		else{
 			user.comparePassword(req.query.password,function(err,isMatch){

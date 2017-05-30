@@ -9,12 +9,13 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
     $scope.progress = promiseTracker();
 
     // Form submit handler.
+    
     $scope.submit = function(form) {
       // Trigger validation flag.
       $scope.submitted = true;
 
       // If form is invalid, return and let AngularJS show validation errors.
-      if (form.$invalid) {
+      if (form.$invalid || ($scope.password != $scope.password2)) {
         return;
       }
       
@@ -47,6 +48,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.lastname = null;
             $scope.email = null;
             $scope.password = null;
+            $scope.password2 = null;
             $scope.userType = null;
             //$scope.messages = 'Your form has been sent!';
             $scope.messages = data.msg;
@@ -66,13 +68,14 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           $log.error(data);
         })
         .finally(function() {
-          // Hide status messages after three seconds.
+          // Hide status messages after five seconds.
           $timeout(function() {
             $scope.messages = null;
-          }, 3000);
+          }, 5000);
         });
 
       // Track the request and show its progress to the user.
       $scope.progress.addPromise($promise);
     };
+    
   });

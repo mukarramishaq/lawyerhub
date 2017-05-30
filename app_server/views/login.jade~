@@ -3,7 +3,10 @@ block content
 	.container
 		.row
 			.col-md-6.col-md-offset-3
-				h1 You are loggin in as #{userType}
+				h1 You are logging in as #{userType}
+		.row
+				.col-md-2.col-md-offset-5
+						a(href='/login/#{inverseUserType}') want to login as #{inverseUserType}?
 		.row
 			.col-md-12
 				.container(data-ng-app='myApp')
@@ -34,7 +37,5 @@ block content
 								input.form-control(type='password', name='password', data-ng-model='password', required='')
 								|  
 							button.btn.btn-default(data-ng-disabled='progress.active()', data-ng-click='submit(loginForm)') Log In
-			.row
-				.col-md-2.col-md-offset-5
-						a(href='/login/#{inverseUserType}') want to login as #{inverseUserType}?
+			
 	script(type='text/javascript', src='/javascripts/signuplogin/js/applogin.js')

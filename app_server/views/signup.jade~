@@ -5,6 +5,9 @@ block content
 			.col-md-6.col-md-offset-3
 				h1 You are signing up as #{userType}
 		.row
+			.col-md-2.col-md-offset-5
+					a(href='/signup/#{inverseUserType}') want to sign up as #{inverseUserType}?
+		.row
 			.col-md-12
 				.container(data-ng-app='myApp')
 					div(data-ng-controller='signup')
@@ -14,7 +17,7 @@ block content
 						|    
 						form(name='signupForm', novalidate='', role='form')
 							.form-group   
-								input.form-control(type='text', name='userType', data-ng-model='type', value= userType style='display:none')
+								input.form-control(type='text', name='userType', data-ng-model='type', value= userType style='display:none;')
 							.form-group
 								label(for='firstname') First Name 
 								|         
@@ -47,8 +50,16 @@ block content
 								|        
 								input.form-control(type='password', name='password', data-ng-model='password', required='')
 								|  
+							.form-gruop
+								lable(for='password2')
+								|Repeat Password
+								span.label.label-danger(data-ng-show='submitted && signupForm.password2.$error.required') Required!
+								|        
+								span.label.label-danger(data-ng-show='submitted && signupForm.$error.password2') Invalid Password!
+								| 
+								span.label.label-danger(data-ng-show='submitted && (signupForm.password2!=signupForm.password)) Password does not match!
+								|        
+								input.form-control(type='password', name='password', data-ng-model='password2', required='')
+								|  
 							button.btn.btn-default(data-ng-disabled='progress.active()', data-ng-click='submit(signupForm)') Sign Up
-			.row
-				.col-md-2.col-md-offset-5
-						a(href='/signup/#{inverseUserType}') want to sign up as #{inverseUserType}?
 	script(type='text/javascript', src='/javascripts/signuplogin/js/app.js')

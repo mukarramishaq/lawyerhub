@@ -4,11 +4,11 @@ module.exports.signup = function(req,res){
 	//console.log('sh'+req.params['userType']);
 	if(userType == 'lawyer'){
 		//console.log('-----> ut:'+userType);
-		res.render('signup',{title:'Signup | LawyerHub',linkHome:'/',userType:'lawyer',inverseUserType:'client'});
+		res.render('signup',{title:'Signup',linkHome:'/',nameHome:'LawyerHub',userType:'lawyer',inverseUserType:'client'});
 	}
 	else{
 		//console.log('!!!!!-----> ut:');
-		res.render('signup',{title:'Signup | LawyerHub',linkHome:'/',userType:'client',inverseUserType:'lawyer'});
+		res.render('signup',{title:'Signup',linkHome:'/',nameHome:'LawyerHub',userType:'client',inverseUserType:'lawyer'});
 	}
 };
 module.exports.action = function(req,res){
