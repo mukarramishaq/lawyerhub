@@ -22,10 +22,10 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       //set type of user
       var path = $location.absUrl();
       if(path.indexOf('lawyer')!== -1){
-      	$scope.type = 'lawyer'
+      	$scope.type = 'lawyer';
       }
       else{
-      	$scope.type = 'client'
+      	$scope.type = 'client';
       }
       // Default values for the request.
       var config = {

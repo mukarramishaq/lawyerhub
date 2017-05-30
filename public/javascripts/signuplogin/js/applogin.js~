@@ -19,7 +19,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
 		//set type of user
       var path = $location.absUrl();
       if(path.indexOf('lawyer')!== -1){
-      	$scope.type = 'lawyer'
+      	$scope.type = 'lawyer';
       }
       else{
       	$scope.type = 'client'
@@ -44,7 +44,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.userType = null;
             $scope.messages = data.msg;
             $scope.submitted = false;
-            $location.href = data.rurl;
+            $window.location.href = data.rurl;
           } else {
             $scope.messages = data.msg;
             $log.error(data);
