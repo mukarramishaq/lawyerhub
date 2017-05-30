@@ -21,7 +21,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       if(path.indexOf('lawyer')!= -1){
       	$scope.type = 'lawyer';
       }
-      if(path.indexOf('client')){
+      if(path.indexOf('client')!= -1){
       	$scope.type = 'client';
       }
       // Default values for the request.
@@ -60,7 +60,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           // Hide status messages after three seconds.
           $timeout(function() {
             $scope.messages = null;
-          }, 3000);
+          }, 5000);
         });
 
       // Track the request and show its progress to the user.

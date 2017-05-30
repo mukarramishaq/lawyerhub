@@ -57,10 +57,10 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           $log.error(data);
         })
         .finally(function() {
-          // Hide status messages after three seconds.
+          // Hide status messages after five seconds.
           $timeout(function() {
             $scope.messages = null;
-          }, 3000);
+          }, 5000);
         });
 
       // Track the request and show its progress to the user.
