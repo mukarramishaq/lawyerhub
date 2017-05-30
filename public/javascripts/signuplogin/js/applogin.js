@@ -21,7 +21,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       if(path.indexOf('lawyer')!= -1){
       	$scope.type = 'lawyer';
       }
-      else{
+      if(path.indexOf('client')!= -1){
       	$scope.type = 'client';
       }
       // Default values for the request.
