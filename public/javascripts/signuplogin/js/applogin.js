@@ -18,7 +18,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       }
 		//set type of user
       var path = $location.absUrl();
-      if(path.indexOf('lawyer')!== -1){
+      if(path.indexOf('lawyer')!= -1){
       	$scope.type = 'lawyer';
       }
       else{

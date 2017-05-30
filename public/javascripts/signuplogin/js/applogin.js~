@@ -18,7 +18,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       }
 		//set type of user
       var path = $location.absUrl();
-      if(path.indexOf('lawyer')!== -1){
+      if(path.indexOf('lawyer')!= -1){
       	$scope.type = 'lawyer';
       }
       else{
@@ -37,7 +37,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       // Perform JSONP request.
       var $promise = $http.get('/loginAttempt', config)
         .success(function(data, status, headers, config) {
-        	console.log(data);console.log(status);console.log(config);console.log();
+        	console.log(data);console.log(status);console.log(config);console.log($scope.type);
           if (data.status == 'OK') {
             $scope.email = null;
             $scope.password = null;

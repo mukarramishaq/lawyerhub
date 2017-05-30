@@ -5,8 +5,8 @@ block content
 			.col-md-6.col-md-offset-3
 				h1 You are logging in as #{userType}
 		.row
-				.col-md-2.col-md-offset-5
-						a(href='/login/#{inverseUserType}') want to login as #{inverseUserType}?
+			.col-md-2.col-md-offset-5
+					a(href='/login/#{inverseUserType}') want to login as #{inverseUserType}?
 		.row
 			.col-md-12
 				.container(data-ng-app='myApp')
@@ -16,8 +16,6 @@ block content
 						div(data-ng-show='progress.active()', style='color: red; font-size: 50px;') Sending&mldr;
 						|    
 						form(name='loginForm', novalidate='', role='form')
-							.form-group      
-								input.form-control(type='hidden', name='userType', data-ng-model='userType', value= userType)
 							.form-group
 								label(for='email') Your E-mail address
 								|         
