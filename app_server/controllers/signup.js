@@ -34,8 +34,8 @@ module.exports.action = function(req,res){
 				var newUser = new User(user);
 				newUser.save(function(err){
 					if(err){
-						console.log('internal server error');
-						res.json({'status':'300','msg':'Internal Server error. Please try again later.'});
+						console.log('internal server error: '+err);
+						res.json({'status':'300','msg':'Internal Server error: Error during saving your details!'});
 					}
 					else{
 						console.log('successfull');

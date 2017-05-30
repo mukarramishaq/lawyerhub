@@ -9,8 +9,6 @@ html
 		script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 		script(type='text/javascript', src='http://code.angularjs.org/1.2.25/angular.min.js')
 		script(type='text/javascript', src='/javascripts/signuplogin/js/modules/promise-tracker.js')
-		
-		//
 		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
 	body
 		nav.navbar.navbar-inverse

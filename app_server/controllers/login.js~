@@ -28,7 +28,7 @@ module.exports.loginVerifier = function(req,res){
 						console.log('successfull login');
 						//set a cookie with the user information
 						//req.session.user = user;
-						res.json('dashboard',{title:'Dashboard',linkHome:'/',nameHome:'LawyerHub'});
+						res.json({'status':'OK','msg':'Login Successful'});
 					}
 					else{
 						res.json({'status':'400', 'msg':'Incorrect password!'});

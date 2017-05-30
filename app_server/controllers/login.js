@@ -16,7 +16,7 @@ module.exports.loginVerifier = function(req,res){
 	User.findOne({'emailid':req.query.email,'type':req.query.type},function(err,user){
 		if(err) throw err;
 		if(!user){
-			res.json({'status':'400','msg':'Emaild or password is invalid!'});
+			res.json({'status':'400','msg':'This email is registered as '+user.type+'. So change login type to get access.'});
 		}
 		else{
 			user.comparePassword(req.query.password,function(err,isMatch){
