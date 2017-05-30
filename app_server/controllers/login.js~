@@ -21,7 +21,7 @@ module.exports.loginVerifier = function(req,res){
 			var tempType = '';
 			if(req.query.type == 'lawyer'){ tempType = 'client';}
 			else {tempType = 'lawyer';}
-			res.json({'status':'400','msg':'Invalid Email or this email may be registered as '+tempType+'. Whereas you are logging as '+req.query.type});
+			res.json({'status':'400','msg':'This email is not registered or this email may be registered as '+tempType+'. Whereas you are logging as '+req.query.type});
 		}
 		else{
 			user.comparePassword(req.query.password,function(err,isMatch){

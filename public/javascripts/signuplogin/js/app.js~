@@ -25,7 +25,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       	$scope.type = 'lawyer';
       }
       else{
-      	$scope.type = 'client'
+      	$scope.type = 'client';
       }
       // Default values for the request.
       var config = {
