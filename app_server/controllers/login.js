@@ -14,9 +14,13 @@ module.exports.login = function(req,res){
 module.exports.loginVerifier = function(req,res){
 	//first check the all fields have data and then take measures for sql injection, for the time being it is not implemented yet
 	User.findOne({'emailid':req.query.email,'type':req.query.type},function(err,user){
-		if(err) throw err;
+		if(err) res.json({'status':'500','msg':'Error during retrieving credentials from database!'});
 		if(!user){
-			res.json({'status':'400','msg':'This email is registered as '+user.type+'. So change login type to get access.'});
+			console.log(user);
+			var tempType = '';
+			if(req.query.type == 'lawyer'){ tempType = 'client';}
+			else {tempType = 'lawyer';}
+			res.json({'status':'400','msg':'This email is registered as '+tempType+'. Whereas you are logging as '+req.query.type});
 		}
 		else{
 			user.comparePassword(req.query.password,function(err,isMatch){
