@@ -21,7 +21,8 @@ module.exports.verifySignupLink = function(req,res){
 	var sess = req.session;
 	if(sess.user){
 		if(userType == sess.user.type && emailid == sess.user.emailid && key1 == sess.key1 && key2 == sess.key2){
-			var newUser = sess.user;
+			var newUser = new User({firstname:sess.user.firstname,lastname:sess.user.lastname,
+				emailid:sess.user.emailid,password:sess.user.password,type:sess.user.type});
 			newUser.save(function(error){
 				if(error){
 						console.log('internal server error: '+error);
@@ -29,6 +30,7 @@ module.exports.verifySignupLink = function(req,res){
 				}
 				else{
 					console.log('successfull');
+					req.sess = null;
 					res.render('invalid',{title:'Home',linkHome:'/',nameHome:'LawyerHub',invalidHeader:'Verification Successful',invalidDescription:'Thank you for registering. Please log in to get access.'});
 					//return res.redirect('/login/'+user.type);
 				}
@@ -82,12 +84,12 @@ module.exports.action = function(req,res){
 			}
 			else{
 				console.log('invalid data');
-				res.json({'status':'400','msg':'Invalid data'});
+				res.json({'status':'400','msg':'Invalid data',alertTime:5000});
 			}
 		}
 		else{
 			console.log(';;;;;;Already exists!!!!!');
-			res.json({'status':'500','msg':'User with this email address already exists'});
+			res.json({'status':'500','msg':'User with this email address already exists',alertTime:5000});
 		}
 	});
 	

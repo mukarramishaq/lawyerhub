@@ -11,7 +11,7 @@ module.exports.sendEmail = function(req,res,next){
 			from:'mukarramishaq188@gmail.com',
 			to: sess.user.emailid,
 			subject:'Verify Signup | LawyerHub',
-			html: '<b>Thank for choosing us! Please open the following link to verify your sign up!</b>'
+			html: '<b>Thank for choosing us! Please open the following link to verify your sign up!</b><a href="lawyerhub.herokuapp.com/signup/confirmation/'+sess.user.type+'/'+sess.user.emailid+'/'+sess.key1+'/'+sess.key2+'">Confirm Registration!</a>'
 		};
 		
 		transporter.sendMail(mailOptions,function(error,info){

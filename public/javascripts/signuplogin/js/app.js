@@ -52,6 +52,12 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
         	//console.log(data);console.log(status);console.log(config);
         	//console.log(data.rurl);
         	//$window.location.href = data.rurl;
+        	 if(data.alertTime){
+            	$scope.alertTime = data.alertTime;
+            }
+            else{
+            	$scope.alertTime = 5000;
+            }
           if (data.status == 'OK') {
           	console.log(data);
             $scope.firstname = null;
@@ -61,12 +67,6 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.password2 = null;
             $scope.userType = null;
             //$scope.messages = 'Your form has been sent!';
-            if(data.alertTime){
-            	$scope.alertTime = data.alertTime;
-            }
-            else{
-            	$scope.alertTime = 5000;
-            }
             $scope.messages = data.msg;
             $scope.submitted = false;
           } 

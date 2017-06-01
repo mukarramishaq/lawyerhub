@@ -21,7 +21,8 @@ module.exports.verifySignupLink = function(req,res){
 	var sess = req.session;
 	if(sess.user){
 		if(userType == sess.user.type && emailid == sess.user.emailid && key1 == sess.key1 && key2 == sess.key2){
-			var newUser = sess.user;
+			var newUser = new User({firstname:sess.user.firstname,lastname:sess.user.lastname,
+				emailid:sess.user.emailid,password:sess.user.password,type:sess.user.type});
 			newUser.save(function(error){
 				if(error){
 						console.log('internal server error: '+error);
@@ -47,7 +48,7 @@ module.exports.action = function(req,res){
 	//resData = {};
 	//console.log(req.query.email);
 	User.findOne({'emailid':user.emailid},function(err,usr){
-		if(err) res.json({'status':'300','msg':'Internal Server error. Please try again later'});
+		if(err) res.json({'status':'300','msg':'Internal Server error. Please try again later',alertTime:5000});
 		else if(!usr){
 			console.log(';;;;;;DOES nOT exists!!!!!');
 			var flag = false;
@@ -83,12 +84,12 @@ module.exports.action = function(req,res){
 			}
 			else{
 				console.log('invalid data');
-				res.json({'status':'400','msg':'Invalid data'});
+				res.json({'status':'400','msg':'Invalid data',alertTime:5000});
 			}
 		}
 		else{
 			console.log(';;;;;;Already exists!!!!!');
-			res.json({'status':'500','msg':'User with this email address already exists'});
+			res.json({'status':'500','msg':'User with this email address already exists',alertTime:5000});
 		}
 	});
 	
