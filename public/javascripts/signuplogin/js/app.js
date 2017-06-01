@@ -7,8 +7,9 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
 
     // Inititate the promise tracker to track form submissions.
     $scope.progress = promiseTracker();
-
+	
     // Form submit handler.
+    
     
     $scope.submit = function(form) {
       // Trigger validation flag.
@@ -16,6 +17,12 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
 
       // If form is invalid, return and let AngularJS show validation errors.
       if (form.$invalid || ($scope.password != $scope.password2)) {
+      	if($scope.password != $scope.password2){
+      		$scope.messages = 'Password does not match';
+      		$timeout(function() {
+            $scope.messages = null;
+          }, 3000);
+      	}
         return;
       }
       

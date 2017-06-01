@@ -1,0 +1,47 @@
+extends layoutd
+block content
+	.container
+		.row
+			.col-md-8.col-md-offset-2
+				h1 Describe Your Problem and upload
+		.row
+			.col-md-12
+				.container(data-ng-app='myApp')
+					div(data-ng-controller='postController')
+						#messages.alert.alert-success(data-ng-show='messages', data-ng-bind='messages')
+						|    
+						div(data-ng-show='progress.active()', style='color: red; font-size: 50px;') Wait&mldr;
+						|    
+						form(name='postForm', novalidate='', role='form')
+							.form-group
+								label(for='subject') Subject
+								|         
+								span.label.label-danger(data-ng-show='submitted && postForm.subject.$error.required') Required!
+								|         
+								span.label.label-danger(data-ng-show='submitted && postForm.$error.subject') Invalid Subject!
+								|         
+								input.form-control(type='text', name='subject', data-ng-model='subject', required='')
+								| 
+							.form-group
+								label(for='description') Details
+								|         
+								span.label.label-danger(data-ng-show='submitted && postForm.description.$error.required') Required!
+								|         
+								span.label.label-danger(data-ng-show='submitted && postForm.$error.description') Invalid Subject!
+								|         
+								textarea.form-control(type='text', rows='5',name='description', data-ng-model='description', required='')
+								|      
+							.form-gruop
+								lable(for='contactno')
+								|Contact No
+								span.label.label-danger(data-ng-show='submitted && postForm.contactno.$error.required') Required!
+								|        
+								span.label.label-danger(data-ng-show='submitted && postForm.$error.contactno') Invalid Contact No!
+								|        
+								input.form-control(type='number', name='contactno', data-ng-model='contactno', required='')
+								|  
+								br
+								br
+								br
+							button.btn.btn-info.btn-block(data-ng-disabled='progress.active()', data-ng-click='submit(postForm)') Post
+	script(type='text/javascript', src='/javascripts/postApp.js')

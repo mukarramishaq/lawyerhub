@@ -13,7 +13,7 @@ block content
 					div(data-ng-controller='signup')
 						#messages.alert.alert-success(data-ng-show='messages', data-ng-bind='messages')
 						|    
-						div(data-ng-show='progress.active()', style='color: red; font-size: 50px;') Sending&mldr;
+						div(data-ng-show='progress.active()', style='color: red; font-size: 50px;') Wait&mldr;
 						|    
 						form(name='signupForm', novalidate='', role='form')
 							.form-group   
@@ -56,10 +56,10 @@ block content
 								span.label.label-danger(data-ng-show='submitted && signupForm.password2.$error.required') Required!
 								|        
 								span.label.label-danger(data-ng-show='submitted && signupForm.$error.password2') Invalid Password!
-								| 
-								span.label.label-danger(data-ng-show='submitted && (signupForm.password2!=signupForm.password)) Password does not match!
-								|        
-								input.form-control(type='password', name='password', data-ng-model='password2', required='')
+								|
+								span.label.label-danger(data-ng-show='singupForm.password2.$pristine && (signupForm.password2 != signupForm.password)') Password does not match!
+								|         
+								input.form-control(type='password', name='password2', data-ng-model='password2', required='')
 								|  
 							button.btn.btn-default(data-ng-disabled='progress.active()', data-ng-click='submit(signupForm)') Sign Up
 	script(type='text/javascript', src='/javascripts/signuplogin/js/app.js')

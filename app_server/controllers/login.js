@@ -2,17 +2,24 @@ var User = require('../models/userSchema');
 module.exports.login = function(req,res){
 	var userType = req.params.userType;
 	//console.log(req.params.userType);
-	if(userType == 'lawyer'){
-		//console.log('-----> ut:'+userType);
-		res.render('login',{title:'Login',linkHome:'/',nameHome:'LawyerHub',userType:'lawyer',inverseUserType:'client'});
+	var sess = req.session;
+	if(sess.emailid){
+		res.redirect('/dashboard/'+sess.type);
 	}
 	else{
-		//console.log('!!!!!!!-----> ut:'+userType);
-		res.render('login',{title:'Login | LawyerHub',linkHome:'/',nameHome:'LawyerHub',userType:'client',inverseUserType:'lawyer'});
+		if(userType == 'lawyer'){
+			//console.log('-----> ut:'+userType);
+			res.render('login',{title:'Login',linkHome:'/',nameHome:'LawyerHub',userType:'lawyer',inverseUserType:'client'});
+		}
+		else{
+			//console.log('!!!!!!!-----> ut:'+userType);
+			res.render('login',{title:'Login | LawyerHub',linkHome:'/',nameHome:'LawyerHub',userType:'client',inverseUserType:'lawyer'});
+		}
 	}
 };
 module.exports.loginVerifier = function(req,res){
 	var sess = req.session;
+	
 	//first check the all fields have data and then take measures for sql injection, for the time being it is not implemented yet
 	User.findOne({'emailid':req.query.email,'type':req.query.type},function(err,user){
 		if(err) res.json({'status':'500','msg':'Error during retrieving credentials from database!'});

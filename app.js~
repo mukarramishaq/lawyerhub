@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieSession({
 	name: 'session',
 	secret: 'lakdjflaksdjfklasdjfosduieoruw,wenqr,mnrqw,emrn',
-	maxAge: 2*60*1000
+	maxAge: 30*60*1000
 	}));
 //add routers 
 app.use('/', index);

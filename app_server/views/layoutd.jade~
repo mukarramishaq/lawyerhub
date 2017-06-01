@@ -3,16 +3,20 @@ html
 	head
 		title #{title} | #{nameHome}
 		meta(name="viewport",content="width=device-width, initial-scale=1")
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		//link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
 		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 		script(type='text/javascript', src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		script(type='text/javascript', src='http://code.angularjs.org/1.2.25/angular.min.js')
+		script(type='text/javascript', src='/javascripts/signuplogin/js/modules/promise-tracker.js')
+		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
 	body
 		nav.navbar.navbar-inverse
 			div.container-fluid
 				div.navbar-header
 					a.navbar-brand(href=linkHome)= nameHome
 				ul.nav.navbar-nav.navbar-right
-					li: a(href='/dashboard/profile'): span.glyphicon.glyphicon-user  #{userName}
+					li: a(href='#',ng-click='#{apLink}'): span.glyphicon.glyphicon-list-alt  #{apName}
+					li: a(href='/profile/#{userName}'): span.glyphicon.glyphicon-user  #{userName}
 					li: a(href='/logout'): span.glyphicon.glyphicon-log-out  Logout
 		block content

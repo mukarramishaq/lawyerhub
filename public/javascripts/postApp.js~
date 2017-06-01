@@ -2,71 +2,43 @@
  * AngularJS module to process a form.
  */
 angular.module('myApp', ['ajoslin.promise-tracker'])
-  .controller('signup', function ($scope, $http, $log, promiseTracker, $timeout,$location) {
+  .controller('postController', function ($scope, $http, $log, promiseTracker, $timeout,$location) {
     
-
+    
     // Inititate the promise tracker to track form submissions.
     $scope.progress = promiseTracker();
-	//check does passwords match or not
-	if($scope.password == $scope.password2){$scope.messages = null;}
-	else{
-		$scope.messages = 'Password does not match';
-		$timeout(function() {
-            $scope.messages = null;
-          }, 5000);	
-	}
+
     // Form submit handler.
-    
     
     $scope.submit = function(form) {
       // Trigger validation flag.
       $scope.submitted = true;
 
       // If form is invalid, return and let AngularJS show validation errors.
-      if (form.$invalid || ($scope.password != $scope.password2)) {
-      	if($scope.password != $scope.password2){
-      		$scope.messages = 'Password does not match';
-      		$timeout(function() {
-            $scope.messages = null;
-          }, 3000);
-      	}
+      if (form.$invalid) {
         return;
       }
-      
-      //set type of user
-      var path = $location.absUrl();
-      if(path.indexOf('lawyer')!= -1){
-      	$scope.type = 'lawyer';
-      }
-      if(path.indexOf('client')!=-1){
-      	$scope.type = 'client';
-      }
+      var postData = {'subject' : $scope.subject,
+          'description' : $scope.description,
+          'contactno' : $scope.contactno};
       // Default values for the request.
       var config = {
         params : {
           'callback' : 'JSON_CALLBACK',
-          'firstname' : $scope.firstname,
-          'lastname' : $scope.lastname,
-          'email' : $scope.email,
-          'password': $scope.password,
-          'userType': $scope.type,
+          'subject' : $scope.subject,
+          'description' : $scope.description,
+          'contactno' : $scope.contactno,
         },
       };
 
       // Perform JSONP request.
-      var $promise = $http.get('/createAccount', config)
+      var $promise = $http({url:'/dashboard/createPost',method:'POST',headers: {'Content-Type': 'application/json'},data:postData})
         .success(function(data, status, headers, config) {
         	//console.log(data);console.log(status);console.log(config);
         	//console.log(data.rurl);
         	//$window.location.href = data.rurl;
           if (data.status == 'OK') {
           	console.log(data);
-            $scope.firstname = null;
-            $scope.lastname = null;
-            $scope.email = null;
-            $scope.password = null;
-            $scope.password2 = null;
-            $scope.userType = null;
             //$scope.messages = 'Your form has been sent!';
             $scope.messages = data.msg;
             $scope.submitted = false;

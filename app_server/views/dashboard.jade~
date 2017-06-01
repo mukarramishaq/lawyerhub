@@ -2,8 +2,35 @@ extends layoutd
 block content
 	.container
 		.row
-			.col-md-2
-			.col-md-8
-				h1= title
-				p welcom to #title
-			.col-md-2
+			.col-md-8.col-md-offset-2
+				.row
+					.col-md-12
+						button.btn-info.btn-block.btn-lg#messages(data-ng-bind='messages',ng-click='newFeed()') {{messages}}
+				.row
+					.col-md-12
+						div(ng-repeat='post in posts')
+							.row
+								.col-md-12
+									table
+										thead
+											tr
+												th
+													h3 {{post.subject}}
+										tbody
+											tr
+												td
+													{{post.description}}
+											tr
+												td
+													{{post.emailid}}
+											tr
+												td
+													{{post.contactno}}
+											tr
+												td
+													Date: {{post.postedDate}}
+	script(type='text/javascript', src='/javascripts/allPostApp.js')
+	link(rel='stylesheet',href='/stylesheets/postStyle.css')
+	script(type='text/javascripts',src='/javascripts/postStyle.js')
+						
+				
