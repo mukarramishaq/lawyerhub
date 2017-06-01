@@ -7,14 +7,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
 
     // Inititate the promise tracker to track form submissions.
     $scope.progress = promiseTracker();
-	//check does passwords match or not
-	if($scope.password == $scope.password2){$scope.messages = null;}
-	else{
-		$scope.messages = 'Password does not match';
-		$timeout(function() {
-            $scope.messages = null;
-          }, 5000);	
-	}
+	
     // Form submit handler.
     
     
@@ -68,6 +61,12 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.password2 = null;
             $scope.userType = null;
             //$scope.messages = 'Your form has been sent!';
+            if(data.alertTime){
+            	$scope.alertTime = data.alertTime;
+            }
+            else{
+            	$scope.alertTime = 5000;
+            }
             $scope.messages = data.msg;
             $scope.submitted = false;
           } 

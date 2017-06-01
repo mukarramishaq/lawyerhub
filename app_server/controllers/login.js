@@ -21,6 +21,10 @@ module.exports.loginVerifier = function(req,res){
 	var sess = req.session;
 	
 	//first check the all fields have data and then take measures for sql injection, for the time being it is not implemented yet
+	if(sess.emailid){
+		return res.json({'status':'400','msg':'There is already a user logged in. user:'+sess.emailid});
+	}
+	else{
 	User.findOne({'emailid':req.query.email,'type':req.query.type},function(err,user){
 		if(err) res.json({'status':'500','msg':'Error during retrieving credentials from database!'});
 		if(!user){
@@ -53,4 +57,5 @@ module.exports.loginVerifier = function(req,res){
 			});
 		}
 	});
+	}
 };

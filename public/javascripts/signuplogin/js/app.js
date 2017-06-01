@@ -61,6 +61,12 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.password2 = null;
             $scope.userType = null;
             //$scope.messages = 'Your form has been sent!';
+            if(data.alertTime){
+            	$scope.alertTime = data.alertTime;
+            }
+            else{
+            	$scope.alertTime = 5000;
+            }
             $scope.messages = data.msg;
             $scope.submitted = false;
           } 
@@ -86,7 +92,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           // Hide status messages after five seconds.
           $timeout(function() {
             $scope.messages = null;
-          }, 5000);
+          }, $scope.alertTime);
         });
 
       // Track the request and show its progress to the user.

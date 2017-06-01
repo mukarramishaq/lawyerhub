@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
   res.render('index', { title: 'LawyerHub' });
 });*/
 router.get('/signup/:userType',ctrlSignup.signup);
+router.get('/signup/confimation/:userType/:emailid/:key1/:key2',ctrlSignup.verifySignupLink);
 router.get('/createAccount',ctrlSignup.action);
 
 module.exports = router;
