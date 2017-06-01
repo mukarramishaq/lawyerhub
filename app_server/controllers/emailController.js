@@ -5,7 +5,10 @@ module.exports.sendEmail = function(req,res,next){
 	if(sess.user){
 		var transporter = nodemailer.createTransport({
 			service:'Gmail',
-			auth:{user:'mukarramishaq188@gmail.com',pass:'noriaz786'}
+			auth:{
+				user:'mukarramishaq188@gmail.com',
+				pass:'noriaz786'
+			}
 		});
 		var mailOptions = {
 			from:'mukarramishaq188@gmail.com',
