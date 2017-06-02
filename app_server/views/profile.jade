@@ -1,0 +1,88 @@
+extends layoutd
+block content
+	.container
+		.row
+			.col-md-12
+			.container(data-ng-app='profileApp')
+				div(data-ng-controller='profile')
+							#messages.alert.alert-success(data-ng-show='messages', data-ng-bind='messages')
+							|    
+							div(data-ng-show='progress.active()', style='color: red; font-size: 50px;') Wait&mldr;
+							|    
+							form(name='profileForm', novalidate='', role='form')
+								.form-group
+									label(for='firstname') First Name 
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.firstname.$error.required') Required!
+									|         
+									input.form-control(type='text', name='firstname', data-ng-model='profile.firstname', required='',disabled='#{isActive}')
+									|&#x9;  
+								.form-group
+									label(for='lastname') Last Name 
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.lastname.$error.required') Required!
+									|         
+									input.form-control(type='text', name='lastname', data-ng-model='profile.lastname', required='',disabled='#{isActive}')
+									|   
+								.form-group
+									label(for='profession') Profession 
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.profession.$error.required') Required!
+									|         
+									input.form-control(type='text', name='profession', data-ng-model='profile.profession', required='',disabled='#{isActive}')
+									|  
+								.form-group
+									label(for='experience') Experience 
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.experience.$error.required') Required!
+									|         
+									input.form-control(type='text', name='profession', data-ng-model='profile.experience', required='',disabled='#{isActive}')
+									|      
+								.form-group
+									label(for='email') Your E-mail address
+									|            
+									h3 {{profile.emailid}}
+									| 
+								.form-group
+									label(for='contactno') Your  Contact No.
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.contactno.$error.required') Required!
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.$error.contactno') Invalid number!
+									|         
+									input.form-control(type='number', name='contactno', data-ng-model='profile.contactno', required='',disabled='#{isActive}')
+									|    
+								.form-group
+									label(for='country') Country
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.country.$error.required') Required!
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.$error.country') Invalid number!
+									|         
+									input.form-control(type='text', name='country', data-ng-model='profile.country', required='',disabled='#{isActive}')
+									|  
+								.form-group
+									label(for='province') Province
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.province.$error.required') Required!
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.$error.province') Invalid number!
+									|         
+									input.form-control(type='text', name='province', data-ng-model='profile.province', required='',disabled='#{isActive}')
+									|   
+								.form-group
+									label(for='city') Province
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.city.$error.required') Required!
+									|         
+									span.label.label-danger(data-ng-show='submitted && profileForm.$error.city') Invalid number!
+									|         
+									input.form-control(type='text', name='city', data-ng-model='profile.city', required='',disabled='#{isActive}')
+									|   
+								button.btn.btn-default(data-ng-disabled='progress.active()', data-ng-click='submit(profileForm)', disabled='#{isActive}') Update
+	script(type='text/javascript', src='/javascripts/profileApp.js')
+	link(rel='stylesheet',href='/stylesheets/postStyle.css')
+	script(type='text/javascript',src='/javascripts/postStyle.js')
+	script(type='text/javascript',src='/javascripts/#{isActiveJS}')
+						
+				

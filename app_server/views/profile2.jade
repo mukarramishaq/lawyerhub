@@ -1,0 +1,30 @@
+extends layoutd
+block content
+	.container
+		.row
+			.col-md-8.col-md-offset-2(data-ng-app='profileApp',data-ng-controller='profileController' )
+				.row
+					.col-md-12
+						button.btn-info.btn-block.btn-lg#messages(data-ng-bind='messages') {{messages}}
+				.row
+					.col-md-12
+						div
+							.row
+								.col-md-12
+									table
+										tbody
+											tr
+												td
+													h3 {{firstname}}
+											tr
+												td
+													h3 {{lastname}}
+											tr
+												td
+													h3 {{emailid}}
+
+	script(type='text/javascript', src='/javascripts/profileApp.js')
+	link(rel='stylesheet',href='/stylesheets/postStyle.css')
+	script(type='text/javascripts',src='/javascripts/postStyle.js')
+						
+				

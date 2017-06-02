@@ -13,6 +13,7 @@ var loginRouter = require('./app_server/routes/login');
 var signupRouter = require('./app_server/routes/signup');
 var logoutRouter = require('./app_server/routes/logout');
 var dashboardRouter = require('./app_server/routes/dashboard');
+var profileRouter = require('./app_server/routes/profile');
 //var loginController = require('./app_server/controllers/login');
 //var signupController = require('./app_server/controllers/signup');
 var app = express();
@@ -41,6 +42,7 @@ app.use('/', loginRouter);
 app.use('/', signupRouter);
 app.use('/',dashboardRouter);
 app.use('/',logoutRouter);
+app.use('/',profileRouter);
 //app.post('/createAccount',function(req,res){console.log(req.body);});
 app.use('/users', users);
 
