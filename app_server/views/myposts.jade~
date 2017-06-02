@@ -2,7 +2,7 @@ extends layoutd
 block content
 	.container
 		.row
-			.col-md-8.col-md-offset-2(data-ng-app='allPostApp',data-ng-controller='allPostController' )
+			.col-md-8.col-md-offset-2(data-ng-app='myPostApp',data-ng-controller='allPostController' )
 				.row
 					.col-md-12
 						button.btn-info.btn-block.btn-lg#messages(data-ng-bind='messages',ng-click='newFeed()') {{messages}}
@@ -29,7 +29,7 @@ block content
 											tr
 												td
 													Date: {{post.postedDate}}
-	script(type='text/javascript', src='/javascripts/allPostApp.js')
+	script(type='text/javascript', src='/javascripts/myPostApp.js')
 	link(rel='stylesheet',href='/stylesheets/postStyle.css')
 	script(type='text/javascripts',src='/javascripts/postStyle.js')
 						

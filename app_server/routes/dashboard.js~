@@ -9,5 +9,7 @@ var ctrlDashboard = require('../controllers/dashboard');
 //router.get('/dashboard/profile',ctrlDashboard.profile);
 router.get('/dashboard/:userType',ctrlDashboard.dashboard);
 router.post('/dashboard/createPost',ctrlDashboard.createPost);
-router.post('/dashboard/posts/recent',ctrlDashboard.recentPosts);
+router.post('/dashboard/recentPosts',ctrlDashboard.recentPosts);
+router.get('/dashboard/:userType/myposts',ctrlDashboard.myPosts);
+router.get('/dashboard/:userType/myposts/fetch',ctrlDashboard.myPostsFetch)
 module.exports = router;
